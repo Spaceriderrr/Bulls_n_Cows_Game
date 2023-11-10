@@ -5,6 +5,16 @@ def int_to_list(n):
     return [int(i) for i in str(n)]
 
 
+def random_number():
+    res = set()
+    n = 0
+    while len(res) != 4:
+        res.add(str(random.randint(0, 9)))
+    while n < 999:
+        n = int(''.join(list(res)))
+    return int_to_list(n)
+
+
 def counter(value, user_number):
     bulls, cows = 0, 0
     for i in range(len(value)):
@@ -29,7 +39,7 @@ while True:
     break
 
 while main_flag:
-    val = int_to_list(random.randint(1000, 9999))
+    val = random_number()
     print(val)
     local_flag = True
     while local_flag:
