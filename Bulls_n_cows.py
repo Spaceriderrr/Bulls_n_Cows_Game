@@ -30,19 +30,36 @@ while True:
 
 while main_flag:
     val = int_to_list(random.randint(1000, 9999))
+    print(val)
     local_flag = True
     while local_flag:
         guess = int_to_list(int(input('Your number: ')))
         res = counter(val, guess)
         print(f'Answer: {res[0]} bulls, {res[1]} cows')
-        while True:
-            next_iter = input('Make a new guess? Y/N\n')
-            if next_iter == 'Y':
-                local_flag = True
-            elif next_iter == 'N':
-                print('See you later')
-                main_flag, local_flag = False, False
-            else:
-                print('Wrong answer')
-                continue
-            break
+        if res == (4, 0):
+            print('You Win!\nRestart game to play again')
+            while True:
+                next_game = input('start new game? Y/N\n')
+                if next_game == 'Y':
+                    local_flag = False
+                    break
+                elif next_game == 'N':
+                    print('See you later')
+                    local_flag = False
+                    main_flag = False
+                else:
+                    print('Wrong answer')
+                    continue
+                break
+        else:
+            while True:
+                next_iter = input('Make a new guess? Y/N\n')
+                if next_iter == 'Y':
+                    local_flag = True
+                elif next_iter == 'N':
+                    print('See you later')
+                    main_flag, local_flag = False, False
+                else:
+                    print('Wrong answer')
+                    continue
+                break
